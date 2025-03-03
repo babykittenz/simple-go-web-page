@@ -6,7 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"simple-go-web-page/models"
+	"simple-go-web-page/configuration"
 	"time"
 )
 
@@ -15,7 +15,7 @@ const port = ":4000"
 type application struct {
 	templateMap map[string]*template.Template
 	config      appConfig
-	Models      models.Models
+	App         *configuration.Application
 }
 
 type appConfig struct {
@@ -38,9 +38,8 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
+	app.App = configuration.New(db)
 	
-	app.Models = *models.New(db)
-
 	srv := &http.Server{
 		Addr:              port,
 		Handler:           app.routes(),
