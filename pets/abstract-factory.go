@@ -6,25 +6,37 @@ import (
 	"simple-go-web-page/models"
 )
 
+// AnimalInterface is the interface for the types we will return from our abstract
+// factory. We'll create two types which implement this interface: DogFromFactory and
+// CatFromFactory. In order to implement this interface, both types must have a Show()
+// method.
 type AnimalInterface interface {
 	Show() string
 }
+
+// DogFromFactory is a type which implements the AnimalInterface, and embeds a dog.
 type DogFromFactory struct {
 	Pets *models.Dog
 }
 
+// Show is a method on the DogFromFactory type, which makes the type implement AnimalInterface.
 func (dff *DogFromFactory) Show() string {
 	return fmt.Sprintf("This animal is a %s", dff.Pets.Breed.Breed)
 }
 
+// CatFromFactory is a type which implements the AnimalInterface, and embeds a cat.
 type CatFromFactory struct {
 	Pets *models.Cat
 }
 
+// Show is a method on the CatFromFactory type, which makes the type implement AnimalInterface.
 func (cff *CatFromFactory) Show() string {
 	return fmt.Sprintf("This animal is a %s", cff.Pets.Breed.Breed)
 }
 
+// PetFactoryInterface is the interface for our DogAbstractFactory and CatAbstractFactory functions.
+// Both of these types must implement a newPet method which returns a type that satisfies the
+// AnimalInterface.
 type PetFactoryInterface interface {
 	newPet() AnimalInterface
 }
@@ -45,6 +57,8 @@ func (cff *CatAbstractFactory) newPet() AnimalInterface {
 		Pets: &models.Cat{},
 	}
 }
+
+// NewPetFromAbstractFactory is the abstract factory method.
 func NewPetFromAbstractFactory(species string) (AnimalInterface, error) {
 	switch species {
 	case "dog":
