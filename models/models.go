@@ -25,15 +25,15 @@ func New(conn *sql.DB) *Models {
 }
 
 type DogBreed struct {
-	ID               int    `json:"id"`
-	Breed            string `json:"breed"`
-	WeightLowLbs     int    `json:"weight_low_lbs"`
-	WeightHighLbs    int    `json:"weight_high_lbs"`
-	AverageWeight    int    `json:"average_weight"`
-	LifeSpan         int    `json:"life_span"`
-	Details          string `json:"details"`
-	AlternateName    string `json:"alternate_name"`
-	GeographicOrigin string `json:"geographic_origin"`
+	ID               int    `json:"id" xml:"id"`
+	Breed            string `json:"breed" xml:"breed"`
+	WeightLowLbs     int    `json:"weight_low_lbs" xml:"weight_low_lbs"`
+	WeightHighLbs    int    `json:"weight_high_lbs" xml:"weight_high_lbs"`
+	AverageWeight    int    `json:"average_weight" xml:"average_weight"`
+	LifeSpan         int    `json:"life_span" xml:"life_span"`
+	Details          string `json:"details" xml:"details"`
+	AlternateName    string `json:"alternate_name" xml:"alternate_name"`
+	GeographicOrigin string `json:"geographic_origin" xml:"geographic_origin"`
 }
 
 func (d *DogBreed) All() ([]*DogBreed, error) {
@@ -42,15 +42,15 @@ func (d *DogBreed) All() ([]*DogBreed, error) {
 }
 
 type CatBreed struct {
-	ID               int    `json:"id"`
-	Breed            string `json:"breed"`
-	WeightLowLbs     int    `json:"weight_low_lbs"`
-	WeightHighLbs    int    `json:"weight_high_lbs"`
-	AverageWeight    int    `json:"average_weight"`
-	LifeSpan         int    `json:"life_span"`
-	Details          string `json:"details"`
-	AlternateName    string `json:"alternate_name"`
-	GeographicOrigin string `json:"geographic_origin"`
+	ID               int    `json:"id" xml:"id"`
+	Breed            string `json:"breed" xml:"breed"`
+	WeightLowLbs     int    `json:"weight_low_lbs" xml:"weight_low_lbs"`
+	WeightHighLbs    int    `json:"weight_high_lbs" xml:"weight_high_lbs"`
+	AverageWeight    int    `json:"average_weight" xml:"average_weight"`
+	LifeSpan         int    `json:"life_span" xml:"life_span"`
+	Details          string `json:"details" xml:"details"`
+	AlternateName    string `json:"alternate_name" xml:"alternate_name"`
+	GeographicOrigin string `json:"geographic_origin" xml:"geographic_origin"`
 }
 
 type Dog struct {
